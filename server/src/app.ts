@@ -6,6 +6,8 @@ import pinoHttp from "pino-http";
 import { logger } from "./utils/logger";
 import { errorHandler } from "./middlewares/errorHandler";
 import heartbeatRoutes from "./routes/heartbeat.routes";
+import statusRoutes from "./routes/status.routes";
+import historyRoutes from "./routes/history.routes";
 
 const app = express();
 
@@ -46,6 +48,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // ─── Routes ───────────────────────────────────────────────────────────────────
 app.use("/heartbeat", heartbeatRoutes);
+app.use("/status", statusRoutes);
+app.use("/history", historyRoutes);
 
 // ─── Error handler (must be last) ────────────────────────────────────────────
 app.use(errorHandler);
