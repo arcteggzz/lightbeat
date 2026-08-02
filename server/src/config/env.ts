@@ -9,14 +9,6 @@ export const env = {
   logLevel: process.env.LOG_LEVEL || "info",
   appUrl: process.env.APP_URL || "http://localhost:5000",
 
-  jwt: {
-    secret: process.env.JWT_SECRET || "",
-    expirationDays: parseInt(
-      process.env.JWT_EXPIRATION_DURATION_IN_DAYS || "7",
-      10,
-    ),
-  },
-
   db: {
     host: process.env.DB_HOST || "",
     port: parseInt(process.env.DB_PORT || "3306", 10),
@@ -28,7 +20,6 @@ export const env = {
 
 export function validateEnv(): void {
   const required: [string, string][] = [
-    ["JWT_SECRET", env.jwt.secret],
     ["DB_HOST", env.db.host],
     ["DB_USER", env.db.user],
     ["DB_PASSWORD", env.db.password],
