@@ -3,6 +3,8 @@ import "./App.css";
 import { getHistory, getStatus } from "./api";
 import { StatusCard } from "./components/StatusCard";
 import { HistoryList } from "./components/HistoryList";
+import { UptimeStat } from "./components/UptimeStat";
+import { calculateUptimePercent } from "./uptime";
 import type { OutageEvent, StatusData } from "./types";
 
 const STATUS_POLL_MS = 15_000;
@@ -41,7 +43,7 @@ function App() {
 
     async function loadHistory() {
       try {
-        const data = await getHistory(20);
+        const data = await getHistory(100);
         if (!cancelled) setHistory(data);
       } catch {
         // history is secondary — fail quietly, status card is what matters most
@@ -76,6 +78,8 @@ function App() {
             <h1 className="status-title">Checking...</h1>
           </div>
         )}
+
+        <UptimeStat percent={calculateUptimePercent(history)} />
 
         <section className="history-section">
           <h2>Recent outages</h2>
