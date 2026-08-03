@@ -5,15 +5,12 @@ dist/
 # Env files (never commit real credentials)
 .env
 .env.local
+.env.staging
 .env-staging
 .env-prod
 
 # PlatformIO
 .pio/
-.vscode/.browse.c_cpp.db*
-.vscode/c_cpp_properties.json
-.vscode/launch.json
-.vscode/ipch
 
 # Firmware scratch notes / real WiFi creds, kept local only
 firmware/**/credentials.txt
@@ -28,3 +25,7 @@ docs/
 # OS
 .DS_Store
 Thumbs.db
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
